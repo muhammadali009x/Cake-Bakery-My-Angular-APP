@@ -1,0 +1,48 @@
+<button class="mat-dialog-close-btn" (click)="onNoClick()"></button>
+<h3 mat-dialog-title>Please, fill your contacts</h3>
+<div mat-dialog-content>
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+    <div formGroupName="orderDetails" class="order-details">
+      <div class="order-details__item">
+        <div class="order-details__title">Filling:</div>
+        <input class="order-details__val" type="text" formControlName="cakeFillingsSelected">
+      </div>
+      <div class="order-details__item">
+        <div class="order-details__title">Size:</div>
+        <input class="order-details__val" type="text" formControlName="cakeSizesSelected">
+      </div>
+      <div class="order-details__item">
+        <div class="order-details__title">Decorating:</div>
+        <input class="order-details__val" type="text" formControlName="cakeDecoratingSelected">
+      </div>
+    </div>
+    <div class="form-field">
+      <label>
+        <input required formControlName="name" class="text-field" placeholder="Your name" type="text">
+      </label>
+      <label>
+        <input required formControlName="phone" class="text-field" placeholder="Phone number" type="tel">
+      </label>
+    </div>
+    <div formGroupName="address" class="form-field">
+      <label>
+        <input required formControlName="street" class="text-field" placeholder="Street" type="text">
+      </label>
+      <label>
+        <input required formControlName="city" class="text-field" placeholder="City" type="text">
+      </label>
+      <label>
+        <input required formControlName="state" class="text-field" placeholder="State" type="text">
+      </label>
+      <label>
+        <input required formControlName="zip" class="text-field" placeholder="Post code" type="text">
+      </label>
+    </div>
+    <div class="form-field">
+      <label>
+        <textarea formControlName="message" class="text-field" cols="80" placeholder="Your message" rows="1"></textarea>
+      </label>
+    </div>
+    <button class="btn" type="submit" [disabled]="orderForm.invalid">Submit</button>
+  </form>
+</div>

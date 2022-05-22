@@ -1,0 +1,160 @@
+<section id="main-page-order" class="order">
+  <div class="container">
+    <h2 class="center">Special order</h2>
+    <div class="subtitle center">Make your own cake in 3 steps</div>
+    <div class="order-form">
+      <div class="order-steps">
+        <div class="order-step">
+          <h4 class="order-step__name">Filling</h4>
+          <div class="order-step__options">
+
+            <swiper [config]="{
+              nextButton: '.swiper-button-next',
+              prevButton: '.swiper-button-prev',
+              spaceBetween: 30,
+              preloadImages: false,
+              lazy: true}">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let cakeFilling of cakeFillings; first as isFirst; index as i;">
+                  <div
+                      class="order-step__option option-card option-card--h"
+                      [class.selected]="cakeFilling.nameRus === cakeFillingsSelected">
+                    <div class="order-step__selected"><app-icon-svg iconName="icon-check-mark"></app-icon-svg></div>
+                    <div class="option-card__image">
+                      <img data-src="{{ cakeFilling.imageUrl }}" alt="{{ cakeFilling.nameRus }}" class="swiper-lazy">
+                    </div>
+                    <div class="option-card__desc-wrap">
+                      <div class="option-card__name">{{ cakeFilling.nameRus }}</div>
+                      <div class="option-card__desc">{{ cakeFilling.description }}</div>
+                      <div class="option-card__price">{{ cakeFilling.price }} $/{{ cakeFilling.priceUnit }}</div>
+                      <label class="btn" (click)="setCakeFillings(cakeFilling)">
+                        Choose
+                        <input class="visually-hidden" type="checkbox" name="cake-filling" value="shocolade">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-button-next"><app-icon-svg iconName="icon-arrow-right"></app-icon-svg></div>
+              <div class="swiper-button-prev"><app-icon-svg iconName="icon-arrow-left"></app-icon-svg></div>
+            </swiper>
+          </div>
+        </div>
+        <div class="order-step">
+          <h4 class="order-step__name">Size</h4>
+            <div class="order-step__options order-step__options--size">
+              <swiper [config]="{
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 30,
+                slidesPerView: 4,
+                preloadImages: false,
+                lazy: true,
+                breakpoints: {'991': {slidesPerView: 2},'767': {slidesPerView: 1}}
+              }">
+
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let cakeSize of cakeSizes">
+                  <div
+                    class="order-step__option option-item"
+                    [class.selected]="cakeSize.size + 'kg' === cakeSizesSelected"
+                    (click)="setCakeSizes(cakeSize)">
+                    <div class="order-step__selected"><app-icon-svg iconName="icon-check-mark"></app-icon-svg></div>
+                    <div class="option-item__image">
+                      <label>
+                        <img data-src="{{ cakeSize.imageUrl }}" alt="" class="swiper-lazy">
+                        <div class="option-item__val">{{ cakeSize.size }}kg</div>
+                        <input class="visually-hidden" type="radio" name="cake-size" value="{{ cakeSize.size }}kg">
+                      </label>
+                    </div>
+                    <div class="option-item__desc">
+                      {{ cakeSize.diameter }}<br>{{ cakeSize.persons }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-button-next"><app-icon-svg iconName="icon-arrow-right"></app-icon-svg></div>
+              <div class="swiper-button-prev"><app-icon-svg iconName="icon-arrow-left"></app-icon-svg></div>
+            </swiper>
+          </div>
+        </div>
+        <div class="order-step">
+          <h4 class="order-step__name">Decorating</h4>
+            <div class="order-step__options">
+              <swiper [config]="{
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 40,
+                slidesPerView: 2,
+                preloadImages: false,
+                lazy: true,
+                breakpoints: {'767': {slidesPerView: 1}}
+              }">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let cakeDecoratingItem of cakeDecorating; index as i">
+                  <div
+                    class="order-step__option order-step__option--decorating"
+                    [class.selected]="cakeDecoratingItem.nameRus === cakeDecoratingSelected"
+                    (click)="setCakeDecoratings(cakeDecoratingItem)">
+                    <div class="order-step__selected"><app-icon-svg iconName="icon-check-mark"></app-icon-svg></div>
+                    <div class="option-card__image">
+                      <img data-src="{{ cakeDecoratingItem.imageUrl }}" alt="" class="swiper-lazy">
+                    </div>
+                    <div class="option-card__desc">
+                      <div class="option-card__name">{{ cakeDecoratingItem.nameRus }}</div>
+                      <div class="option-card__price">{{ cakeDecoratingItem.price }}$/{{ cakeDecoratingItem.priceUnit }}</div>
+                      <label>
+                        <span class="visually-hidden">Choose</span>
+                        <input class="visually-hidden" type="checkbox" name="cake-filling" value="{{ cakeDecoratingItem.name }}">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-button-next"><app-icon-svg iconName="icon-arrow-right"></app-icon-svg></div>
+              <div class="swiper-button-prev"><app-icon-svg iconName="icon-arrow-left"></app-icon-svg></div>
+              </swiper>
+            </div>
+            <div class="order-submit">
+              <h3>Your choice</h3>
+              <div class="order-submit__row">
+                <div class="order-submit__item">
+                  <div class="order-submit__title">Filling</div>
+                  <input type="text"
+                         class="order-submit__desc"
+                         disabled
+                         value="{{ cakeFillingsSelected }}"
+                         placeholder="Choose filling">
+                </div>
+                <div class="order-submit__item">
+                  <div class="order-submit__title">Size</div>
+                  <input type="text"
+                         class="order-submit__desc"
+                         disabled
+                         value="{{ cakeSizesSelected }}"
+                         placeholder="Choose size">
+                </div>
+                <div class="order-submit__item">
+                  <div class="order-submit__title">Decorating</div>
+                  <input type="text"
+                         class="order-submit__desc"
+                         name="cake-decorating"
+                         disabled
+                         value="{{ cakeDecoratingSelected }}"
+                         placeholder="Choose decorating">
+                </div>
+                <div class="order-submit__item">
+                  <button
+                      class="btn"
+                      type="button"
+                      [disabled]="!cakeFillingsSelected || !cakeSizesSelected || !cakeDecoratingSelected"
+                      (click)="openDialog()"
+                      name="order-form-submit">Place order</button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

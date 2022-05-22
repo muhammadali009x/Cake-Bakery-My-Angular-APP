@@ -1,0 +1,21 @@
+<header (scroll)="onWindowScroll($event)" [class.fixed]="isStickHeader">
+  <div>
+    <div class="container">
+      <div class="header-wrapper">
+        <a href="/" class="logo">Cakes</a>
+        <ul class="main-nav"
+          [class.opened]="isMainNavOpened"
+          [@openClose]="isMainNavOpened ? 'open' : 'closed'" >
+          <div class="main-nav__toggle"
+            (click)="mainNavToggle()">
+            <div class="burger-menu"></div>
+          </div>
+          <li [@showHideChild]="isMainNavOpened ? 'open' : 'closed'" *ngFor="let mainNavLink of mainNavLinks">
+            <a href="/index#{{ mainNavLink.alias }}">{{ mainNavLink.name }}</a>
+          </li>
+        </ul>
+        <a class="phone-number" href="tel:{{phoneNumber}}">{{ phoneNumber }}</a>
+      </div>
+    </div>
+  </div>
+</header>

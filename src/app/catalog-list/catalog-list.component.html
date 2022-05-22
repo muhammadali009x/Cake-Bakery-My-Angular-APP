@@ -1,0 +1,38 @@
+<div *ngIf="!catalogGroup" class="container" style="min-height: 100vh">
+  <h1 class="catalog-header" style="color: transparent">...</h1>
+  <div class="catalog-category">
+    <div class="catalog-category__sidebar">
+      <div class="catalog-category__sidebar__inner">
+      </div>
+    </div>
+    <div class="catalog-category__content">
+    </div>
+  </div>
+</div>
+<div *ngIf="catalogGroup" class="container">
+  <h1 class="catalog-header">{{ catalogGroup.nameRus }}</h1>
+  <div class="catalog-category">
+    <div class="catalog-category__sidebar">
+      <div class="catalog-category__sidebar__inner">
+        <app-catalog-nav></app-catalog-nav>
+        <app-catalog-filters
+        [maxPrice]="maxPrice"
+        [minPrice]="minPrice"
+        (changeMinMaxPrice)="changeViewMinMaxPrice($event)"
+        ></app-catalog-filters>
+      </div>
+      <app-sidebar-banner></app-sidebar-banner>
+    </div>
+    <div class="catalog-category__content">
+      <app-catalog-view
+          (changeCatalogView)="changeView($event)"
+          (changeCatalogSort)="changeSort($event)"></app-catalog-view>
+      <app-catalog-items
+          [id]="catalogGroup.id"
+          [showListSort]="showListSort"
+          [showListView]="showListView"
+          [maxPrice]="maxPrice"
+          [minPrice]="minPrice"></app-catalog-items>
+    </div>
+  </div>
+</div>

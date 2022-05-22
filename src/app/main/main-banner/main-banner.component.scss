@@ -1,0 +1,196 @@
+.main-banner {
+  margin-bottom: -32px;
+  overflow: hidden;
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(100vh - 103px);
+    max-height: 1080px;
+    min-height: 705px;
+    position: relative;
+  }
+  &__wrapper {
+  }
+  &__img {
+    max-height: 100%;
+    width: auto;
+    position: absolute;
+    right: -150px;
+    animation-name: slide-from-right;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 300ms;
+    transform: translate(100%, 0);
+    display: flex;
+    img {
+      object-fit: contain;
+      object-position: right;
+    }
+  }
+  @keyframes slide-from-right {
+    from {
+      transform: translate(100%, 0)
+    }
+    to {
+      transform: translate(0, 0)
+    }
+  }
+  @keyframes slide-from-top {
+    from {
+      transform: translate(0, -200%)
+    }
+    to {
+      transform: translate(0, -100%)
+    }
+  }
+  h1 {
+    max-width: 370px;
+    font-size: 10vh;
+    line-height: 11vh;
+    margin: 0 0 20px;
+  }
+  .subtitle {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 60px;
+  }
+  .btn {
+    margin-bottom: 16vh;
+  }
+}
+
+@media (max-width: 1199px) {
+
+  .main-banner {
+    &__row {
+      height: calc(50vh - 63px);
+      min-height: 705px;
+    }
+    &__img {
+      right: -150px;
+    }
+    h1 {
+      font-size: 58px;
+      line-height: 66px;
+    }
+    .btn {
+      margin-bottom: 62px;
+    }
+  }
+
+}
+
+@media (max-width: 991px) {
+  .main-banner {
+    padding-top: 200px;
+    margin-bottom: 0;
+    &__row {
+      justify-content: center;
+      min-height: 450px;
+    }
+    &__img {
+      top: 0;
+      right: 0;
+      transform: translate(0, -200%);
+      width: 100%;
+      height: auto;
+      max-height: 1000px;
+      animation-name: slide-from-top;
+      display: block;
+    }
+    h1, .subtitle {
+      text-align: center;
+    }
+    h1 {
+      max-width: 100%;
+    }
+    .btn {
+      margin-bottom: 30px;
+      width: fit-content;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+
+  .main-banner {
+    h1 {
+      font-size: 40px;
+      line-height: 44px;
+    }
+    .btn {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .main-banner {
+    padding-top: 120px;
+    &__row {
+      min-height: 380px;
+    }
+    .subtitle {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.banner-advantages {
+
+  &__row {
+    display: flex;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 36px;
+  }
+
+  &__icon {
+    width: 55px;
+    height: 55px;
+    display: inline-block;
+    vertical-align: middle;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 24px;
+  }
+
+  &__icon--eco {
+    background-image: url('/assets/images/icon-eco.png');
+  }
+
+  &__icon--gift {
+    background-image: url('/assets/images/icon-gift.png');
+  }
+
+  &__desc {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 22px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .banner-advantages {
+    &__row {
+      flex-direction: column;
+    }
+
+    &__item {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    &__desc {
+      font-size: 16px;
+    }
+  }
+
+}

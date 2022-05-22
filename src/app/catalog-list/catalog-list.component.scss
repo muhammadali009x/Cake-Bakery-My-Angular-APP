@@ -1,0 +1,43 @@
+@import "../../scss/variables";
+
+.catalog-category {
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-gap: 36px;
+  margin-bottom: 40px;
+
+  &__sidebar {
+    &__inner {
+      background-color: $white;
+      box-shadow: $pink-shadow;
+      padding: 40px 20px;
+    }
+  }
+  &__content {
+  }
+}
+
+@media (max-width: 1199px) {
+  .catalog-header {
+    font-size: 52px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 991px) {
+
+  .catalog-category {
+    display: block;
+    &__sidebar {
+      margin-bottom: 44px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+
+  .catalog-header {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}

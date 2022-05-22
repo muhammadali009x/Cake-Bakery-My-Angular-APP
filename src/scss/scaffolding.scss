@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css?family=Cookie|Open+Sans:400,600|Playfair+Display&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', 'Arial', 'Helvetica', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: $black;
+  background-color: $pink-light;
+}
+
+input, textarea {
+  font-family: 'Open Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $pink;
+
+  &:hover {
+    text-decoration: none;
+  }
+  &:active, &:focus {
+    opacity: 0.7;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  color: $white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 16px;
+  text-align: center;
+  background-color: $pink;
+  border: 1px solid $pink;
+  border-radius: 25px;
+  min-width: 200px;
+  cursor: pointer;
+  transition: 150ms ease;
+
+  &:hover {
+    color: $pink;
+    background-color: $white;
+    box-shadow: $pink-shadow;
+    text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: none;
+    opacity: 0.75;
+  }
+
+  &:focus {
+
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}
+
+.no-style-btn {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.container {
+  max-width: 1220px;
+  padding: 0 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.bg.bg--red {
+  background-color: $red;
+  padding: 100px 0 150px;
+  color: white;
+  h2,h3,h4 {
+    color: white;
+  }
+}
+
+.bg.bg--image {
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.bg.bg--image-right {
+  background-position: right center;
+  padding-right: 50%;
+}
+
+.bg.bg--image-left {
+  background-position: left center;
+  padding-left: 50%;
+}
+
+.validation-errors {
+  color: $red;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid $red;
+  padding: 12px 16px;
+}
+
+.order-rules {
+  max-width: 520px;
+  &__list {
+    font-size: 22px;
+
+    li:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.border-input {
+  cursor: pointer;
+  input {
+    display: none;
+  }
+  span {
+    padding: 2px 6px;
+    border-bottom: 2px solid transparent;
+    transition: 150ms ease;
+  }
+  input:checked + span {
+    border-color: $pink;
+    font-weight: 600;
+  }
+  & + .border-input {
+    margin-left: 8px;
+  }
+  &:hover {
+    span {
+      opacity: 0.85;
+      border-color: $pink;
+    }
+  }
+}
+
+.form-field {
+  label {
+    display: block;
+  }
+  .text-field {
+    border: none;
+    border-bottom: 1px solid #c9bcbb;
+    width: 100%;
+    font-size: 18px;
+    line-height: 24px;
+    background-color: transparent;
+    margin-bottom: 40px;
+
+    &.ng-touched.ng-invalid {
+      border-color: $red;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .bg.bg--image-left {
+    background-position: 120% center;
+    padding-left: 36%;
+  }
+}
+
+@media (max-width: 991px) {
+  .bg.bg--image-left {
+    background-position: center bottom;
+    background-size: contain;
+    padding-left: 0;
+    padding-top: 30px;
+    padding-bottom: 40%;
+  }
+}
+
+@media (max-width: 767px) {
+  .btn {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}
+
+[appScrollPosition] h2 {
+  transform: translate(0, -16px);
+  transition-duration: 500ms;
+  transition-delay: 250ms;
+}
+[appScrollPosition] .subtitle {
+  transform: translate(0, 16px);
+  transition-duration: 500ms;
+  transition-delay: 250ms;
+}
+
+[appScrollPosition] > section {
+  opacity: 0;
+  transition: 1000ms;
+}
+.scroll-animation-visible > section {
+  opacity: 1;
+}
+.scroll-animation-visible h2 {
+  transform: translate(0, 0);
+}
+.scroll-animation-visible .subtitle {
+  transform: translate(0, 0);
+}

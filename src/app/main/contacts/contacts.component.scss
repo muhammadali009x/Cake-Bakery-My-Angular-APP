@@ -1,0 +1,45 @@
+.contacts {
+  background-position: right bottom;
+  padding-bottom: 300px;
+  &__row {
+    display: flex;
+  }
+  &__col {
+    flex-basis: 50%;
+    padding-right: 80px;
+  }
+  .form-field {
+    & + .btn {
+      margin-top: 80px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .contacts {
+    background-position: 200px bottom;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .contacts {
+    padding-bottom: 50px;
+    background-image: none !important;
+    &__row {
+      flex-direction: column;
+    }
+    &__col {
+      flex-basis: 100%;
+      padding-right: 0;
+      &:not(:last-child) {
+        margin-bottom: 32px;
+      }
+    }
+    .form-field {
+      & + .btn {
+        margin-top: 0;
+      }
+    }
+  }
+}

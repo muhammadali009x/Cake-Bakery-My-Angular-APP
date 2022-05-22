@@ -1,0 +1,37 @@
+<section id="main-page-contacts" class="contacts bg bg--image" style="background-image: url(assets/images/berry-2.png)">
+  <div class="container">
+    <h2>Contacts</h2>
+    <div class="subtitle">Any questions?</div>
+    <div class="contacts__row">
+      <div class="contacts__col">
+        <p>Fill the form and we will contact us</p>
+        <form class="contacts-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="form-field">
+            <label>
+              <input class="text-field" required type="text" formControlName="name" placeholder="Your name">
+            </label>
+            <label>
+              <input class="text-field" required type="email" formControlName="email" placeholder="Email">
+            </label>
+            <label>
+              <textarea class="text-field" required formControlName="message" placeholder="Your message" rows="1" cols="80"></textarea>
+            </label>
+            <div
+                *ngIf="contactForm.invalid && (contactForm.dirty || contactForm.touched)"
+                class="validation-errors">
+                  Fill in all required fields.
+                  <div *ngIf="contactForm.controls.email.invalid">Your email is not valid</div>
+              </div>
+          </div>
+          <button class="btn" type="submit" [disabled]="contactForm.invalid">Send</button>
+        </form>
+      </div>
+      <div class="contacts__col">
+        <p>Or call us: <a href="tel:+79262554218">+7 926 255 42 18</a></p>
+        <p>Or send us email: <a href="email:cakes@alexashaweb.com">cakes@alexashaweb.com</a></p>
+        <p>Social networks:</p>
+        <app-s-network></app-s-network>
+      </div>
+    </div>
+  </div>
+</section>

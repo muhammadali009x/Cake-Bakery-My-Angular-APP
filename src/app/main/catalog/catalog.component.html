@@ -1,0 +1,37 @@
+<section id="main-page-catalog" class="catalog offset-bottom">
+  <div class="container">
+    <h2>Our cakes</h2>
+    <div class="catalog__row">
+      <div
+          *ngFor="let catalogGroup of catalogGroups | slice:0:3; index as i; first as isFirst"
+          class="catalog__card"
+          [class.catalog__card--big]="isFirst">
+        <div class="catalog__card-image" dataBg="{{catalogGroup.groupImage.path}}" appLazyLoadBackground></div>
+        <div class="catalog__card-wrap">
+          <div class="catalog__card-name">{{catalogGroup.nameRus}}</div>
+          <div class="catalog__card-desc">{{ catalogGroup.quantity}} types</div>
+        </div>
+        <a routerLink="/catalog/{{catalogGroup.id}}" class="catalog__card-link">
+          <span class="text">See more</span>
+          <span><app-icon-svg iconName="icon-arrow-right"></app-icon-svg></span>
+        </a>
+      </div>
+    </div>
+    <div class="catalog__row">
+      <div
+          *ngFor="let catalogGroup of catalogGroups | slice:3:6; index as i; first as isFirst"
+          class="catalog__card"
+          [class.catalog__card--big]="isFirst">
+        <div class="catalog__card-image" dataBg="{{catalogGroup.groupImage.path}}" appLazyLoadBackground></div>
+        <div class="catalog__card-wrap">
+          <div class="catalog__card-name">{{ catalogGroup.nameRus }}</div>
+          <div class="catalog__card-desc">{{ catalogGroup.quantity }} types</div>
+        </div>
+        <a routerLink="/catalog/{{catalogGroup.id}}" class="catalog__card-link">
+          <span class="text">See more</span>
+          <span><app-icon-svg iconName="icon-arrow-right"></app-icon-svg></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

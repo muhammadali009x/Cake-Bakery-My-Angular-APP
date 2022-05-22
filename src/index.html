@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cakes</title>
+  <base href="/">
+  <meta http-equiv="Cache-Control" content="public, max-age=2592000" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <app-root>
+    <style>
+      .start-loader {
+        background-color: #fbebea;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .start-loader__icon {
+        animation-name: loader-animation;
+        animation-duration: 1000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      @keyframes loader-animation {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <div class="start-loader">
+      <noscript>Please, enable Javascript in your browser.</noscript>
+      <div>
+        <svg width="100" class="start-loader__icon" height="100" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="stroke-gradient">
+              <stop offset="0%" stop-color="#fbebea"/>
+              <stop offset="25%" stop-color="#fbebea"/>
+              <stop offset="100%" stop-color="#f50049"/>
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="42" fill="#fbebea" stroke="url(#stroke-gradient)" stroke-width="8"/>
+        </svg>
+      </div>
+    </div>
+  </app-root>
+</body>
+</html>
